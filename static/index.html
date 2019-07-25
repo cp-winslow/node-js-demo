@@ -30,7 +30,7 @@
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-      data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle 
+      data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle
 navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -75,8 +75,28 @@ navigation">
   </div>
   <!-- /.container -->
   <script>
-    (function () {
+  /*
+  Fork [node-js-demo](https://github.com/Kilavagora/node-js-demo).
+  Add a script to index.html that uses [XMLHttpRequest] to get the weather data from weather.json and then displays it.
 
+  [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
+
+  Push to your node-js-demo fork.
+  Deploy your application to heroku to test it.
+  Once it is working, copy index.html and push as index-xhr.html to your assigments branch for this class.
+  */
+    (function () {
+      const xhr = new XMLHttpRequest();
+
+      xhr.onload = function(e) {
+        if(this.status === 200) {
+          const data = JSON.parse(this.responseText);
+          console.log(data);
+        }
+      };
+
+      xhr.open("GET", "/weather.json");
+      xhr.send();
     })();
   </script>
 </body>
