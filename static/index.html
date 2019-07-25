@@ -86,11 +86,23 @@ navigation">
   Once it is working, copy index.html and push as index-xhr.html to your assigments branch for this class.
   */
     (function () {
+      const weather = document.querySelector("#weather");
+
       const xhr = new XMLHttpRequest();
 
       xhr.onload = function(e) {
         if(this.status === 200) {
           const data = JSON.parse(this.responseText);
+          const htmlFormat = `
+          <h3>Today's Forcast</h3>
+          <h4> Today's Date and Time: ${data.currentWeather.date}</h4>
+          <h4>City: ${data.currentWeather.location}</h4>
+          <span>Temperature: ${data.currentWeather.temperature}</span>
+          <span>Humidity: ${data.currentWeather.humidity}</span>
+          <span>Weather Conditions: ${data.currentWeather.text}</span>
+          <span>Pressure: ${data.currentWeather.pressure}</span>
+          `;
+          weather.innerHTML = htmlFormat;
           console.log(data);
         }
       };
