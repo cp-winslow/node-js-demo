@@ -88,15 +88,11 @@ navigation">
     (function () {
       const weather = document.querySelector("#weather");
 
-      const xhr = new XMLHttpRequest();
-
       fetch("/weather.json")
         .then(function(response) {
           return response.json();
         })
-        .then(function(myJson) {
-          const data = JSON.stringify(myJson));
-
+        .then(function(data) {
           const htmlFormat = `
           <h3>Today's Forcast</h3>
           <h4> Today's Date and Time: ${data.currentWeather.date}</h4>
